@@ -1,0 +1,23 @@
+NAME="hunspell-vi"
+VERSION=2.2.0
+RELEASE=1
+CATEGORY="Text"
+SUMMARY="Vietnamese dictionary for Hunspell"
+DESCRIPTION="Hunspell is a spell checker and morphological analyzer library and
+program designed for languages with rich morphology and complex compounding or
+character encoding.
+This package provides a Vietnamese dictionary for Hunspell."
+HOMEPAGE="https://github.com/1ec5/hunspell-vi"
+SRC_URI="${HOMEPAGE}/archive/v${VERSION}/hunspell-vi-v${VERSION}.tar.gz"
+
+ARCH=noarch
+
+src_compile() { :; }
+
+src_install() {
+	cd ${S}
+	insinto /usr/share/myspell
+	newins dictionaries/vi-DauMoi.aff vi_VN.aff
+	newins dictionaries/vi-DauMoi.dic vi_VN.dic
+	dodoc dictionaries/*.txt
+}
